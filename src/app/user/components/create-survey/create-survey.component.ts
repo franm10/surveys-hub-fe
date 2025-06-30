@@ -106,7 +106,37 @@ export class CreateSurveyComponent {
         this.getOptions(q).removeAt(o);
     }
 
+    get canSubmit(): boolean {
+        if( this.surveyForm.invalid )
+            return false;
 
+        const qs = this.questions;
+        if (qs.length === 0) {
+            return false;
+        }
+
+        for (let i = 0; i < qs.length; i++) {
+            const qGroup = qs.at(i) as FormGroup;
+            if (!qGroup.get('text')!.valid) {
+                return false;
+            }
+
+            const optsArray = qGroup.get('options') as FormArray;
+            if (optsArray.length === 0) {
+                return false;
+            }
+
+            for (let j = 0; j < optsArray.length; j++) {
+                const oGroup = optsArray.at(j) as FormGroup;
+                if (!oGroup.get('text')!.valid) {
+                    return false;
+                }
+            }
+        }
+
+        // tutto ok
+        return true;
+    }
 
     /* --------------- SWITCH form <-> json --------------- */
     onTabChange(e: any) {
@@ -237,8 +267,14 @@ export class CreateSurveyComponent {
                     this.snackBar.open(res.message || "Errore creazione questionario.", 'Chiudi', { duration: 5000 });
             },
             error: err => {
-                const msg = err.error?.message || "Errore creazione questionario.";
-                this.snackBar.open(msg, 'Chiudi', { duration: 5000 });
+                if (err.status === 400) {
+                    this.snackBar.open("Errore: verificare i dati inseriti.", 'Chiudi', {
+                        duration: 5000
+                    });
+                } else {
+                    const msg = err.error?.message || "Errore creazione questionario.";
+                    this.snackBar.open(msg, 'Chiudi', { duration: 5000 });
+                }
             }
         });
     }

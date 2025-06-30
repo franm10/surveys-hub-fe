@@ -16,6 +16,9 @@
                     <input matInput formControlName="description"/>
                 </mat-form-field>
 
+                <p class="expiry-note">
+                    <strong>Nota: </strong><em>Se non imposti una data di scadenza, il questionario scadrà automaticamente tra un anno dalla creazione.</em>
+                </p>
                 <div class="date-row">
                     <mat-form-field appearance="fill">
                         <mat-label>Data Scadenza</mat-label>
@@ -147,8 +150,8 @@
                     <button mat-stroked-button class="add-question-button" (click)="addQuestion()">+ Aggiungi domanda</button>
                 </div>
 
-                <button mat-raised-button class="submit-button" (click)="submitForm()" [disabled]="surveyForm.invalid"
-                        [ngClass]="{'disabled-button': surveyForm.invalid, 'enabled-button': !surveyForm.invalid}">
+                <button mat-raised-button class="submit-button" (click)="submitForm()" [disabled]="!canSubmit"
+                        [ngClass]="{'disabled-button': !canSubmit, 'enabled-button': canSubmit}">
                     <mat-icon>send</mat-icon>&nbsp;Crea questionario
                 </button>
             </form>
