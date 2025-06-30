@@ -32,7 +32,7 @@ import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2
 
 import { provideNativeDateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 
-import { environment }      from '../../environments/environment.dev';
+import { environment }      from '../environments/environment';
 import { routesConfig }     from './app.routes';
 
 import { AppComponent }                 from './app.component';

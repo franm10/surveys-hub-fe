@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { AuthService } from './auth/services/auth.service';
+import {environment} from '../environments/environment';
 
 @Component({
     selector: 'app-root',
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        console.log("ENV: "+environment.source);
         this.userRole$.subscribe( role => {
             if( role==null )
                 console.log('[{}] User not authenticated')
