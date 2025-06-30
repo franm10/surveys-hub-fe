@@ -147,7 +147,8 @@
                     <button mat-stroked-button class="add-question-button" (click)="addQuestion()">+ Aggiungi domanda</button>
                 </div>
 
-                <button mat-raised-button class="submit-button" (click)="submitForm()">
+                <button mat-raised-button class="submit-button" (click)="submitForm()" [disabled]="surveyForm.invalid"
+                        [ngClass]="{'disabled-button': surveyForm.invalid, 'enabled-button': !surveyForm.invalid}">
                     <mat-icon>send</mat-icon>&nbsp;Crea questionario
                 </button>
             </form>

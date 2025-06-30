@@ -190,11 +190,14 @@
     margin: 10px auto 20px;
     padding-inline: 26px;
     font-weight: bold;
+}
+
+.enabled-button {
     color: white !important;
     background: rgb(15, 45, 90) !important;
 
     &:hover {
         background: whitesmoke !important;
-        color: rgb(30, 75, 150) !important;
+        color: rgb(15,45,90) !important;
     }
 }
