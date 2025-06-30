@@ -1,0 +1,22 @@
+<h3 class="header">Richiesta confermata!</h3>
+
+<mat-dialog-content class="content">
+    <h5><strong>Questionario:</strong></h5>
+
+    <p><strong>Titolo:</strong> {{ survey.title }}</p>
+
+    <p><strong>Descrizione:</strong> {{ survey.description }}</p>
+
+    <p><strong>Stato: </strong><span class="status" [ngClass]="statusClass()">{{ translateStatus() }}</span></p>
+
+    <p><strong>Scade il:</strong> {{ survey.expirationDate | date:'dd/MM/yyyy HH:mm' }}</p>
+
+    <div *ngIf="survey?.invitedToken">
+        <p><strong>Token invito:</strong> {{ survey.invitedToken }}</p>
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close class="close-button">Chiudi</button>
+</mat-dialog-actions>

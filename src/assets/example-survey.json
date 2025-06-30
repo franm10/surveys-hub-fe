@@ -1,0 +1,82 @@
+{
+    "title": "European Geography Quiz 2",
+    "description": "Test your knowledge of European landmarks and flags using the images provided.",
+    "questions": [
+        {
+            "text": "Identify the country of this famous landmark:",
+            "imageType": "URL",
+            "imageData": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Eiffel_Tower_%28night%29.jpg",
+            "allowMultipleAnswers": false,
+            "options": [
+                {
+                    "text": "France",
+                    "imageType": "URL",
+                    "imageData": "https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg"
+                },
+                {
+                    "text": "Germany",
+                    "imageType": "URL",
+                    "imageData": "https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg"
+                },
+                {
+                    "text": "Italy",
+                    "imageType": "URL",
+                    "imageData": "https://upload.wikimedia.org/wikipedia/en/0/03/Flag_of_Italy.svg"
+                },
+                {
+                    "text": "Spain",
+                    "imageType": "URL",
+                    "imageData": "https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg"
+                }
+            ]
+        },
+        {
+            "text": "Which two flags are shown below? (Select all that apply)",
+            "imageType": "URL",
+            "imageData": "https://upload.wikimedia.org/wikipedia/commons/5/53/Flags_of_European_Union_and_United_Nations.svg",
+            "allowMultipleAnswers": true,
+            "options": [
+                {
+                    "text": "European Union",
+                    "imageType": "URL",
+                    "imageData": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg"
+                },
+                {
+                    "text": "United Nations",
+                    "imageType": "URL",
+                    "imageData": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Flag_of_the_United_Nations.svg"
+                },
+                {
+                    "text": "NATO",
+                    "imageType": "URL",
+                    "imageData": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Flag_of_NATO.svg"
+                },
+                {
+                    "text": "Council of Europe",
+                    "imageType": "URL",
+                    "imageData": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Flag_of_the_Council_of_Europe.svg"
+                }
+            ]
+        },
+        {
+            "text": "Name this mountain range:",
+            "imageType": "URL",
+            "imageData": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Alps_panorama.jpg",
+            "allowMultipleAnswers": false,
+            "options": [
+                { "text": "Rocky Mountains" },
+                { "text": "Andes" },
+                { "text": "Himalayas" },
+                { "text": "Alps" }
+            ]
+        }
+    ],
+    "expirationDate": "2026-01-01T00:00:00Z",
+    "visibility": "public",
+    "generateInvitedToken": true,
+    "approvalRequired": false,
+    "invitedEmails": [
+        "carla@example.com",
+        "diego@example.com"
+    ]
+}

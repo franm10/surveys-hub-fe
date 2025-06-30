@@ -1,0 +1,77 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+mat-card {
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+}
+
+mat-card-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: rgb(10, 45, 75);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.signup-button {
+    margin-top: 20px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    width: 80%;
+}
+
+.disabled-button {
+    background-color: lightgrey !important;
+}
+
+.enabled-button {
+    color: white !important;
+    background-color: rgb(30, 75, 150);
+}
+
+.enable-button:hover {
+    background-color: rgb(15, 45, 90);
+}
+
+.password-requirements-header {
+    margin-top: -10px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #b71c1c;
+    width: 100%;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.password-rules {
+    width: 100%;
+    padding-left: 10px;
+    font-size: 12px;
+}
+
+.password-rules p.invalid {
+    text-align: left;
+    color: #b71c1c;
+    margin: 0 auto;
+}

@@ -1,0 +1,61 @@
+/* HEADER CSS */
+.header_section {
+  padding: 10px 30px;
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+}
+
+.nav-container .navbar-nav {
+  margin-left: auto;
+}
+
+.nav-container .navbar-nav .nav-item .nav-link {
+  font-size: 17px;
+  padding: 5px 15px;
+  color: rgb(10,45,75);
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 5px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  font-weight: 700;
+}
+
+.nav-container .navbar-nav .nav-item:hover .nav-link,
+.nav-container .navbar-nav .nav-item.active .nav-link {
+  color: red;
+}
+
+.nav-container .nav-button {
+  margin-top: 3px;
+  width: 35px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  color: rgb(10, 45, 75);
+  position: relative; /* Posizionamento del badge */
+}
+
+.nav-container .nav-button:hover {
+  color: red;
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2px 5px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-size: 8px;
+  font-weight: bold;
+}
+
+/* Centrare i menu sotto i relativi bottoni */
+.mat-menu-panel {
+  transform: translateX(-50%) !important;
+  left: 50% !important;
+}

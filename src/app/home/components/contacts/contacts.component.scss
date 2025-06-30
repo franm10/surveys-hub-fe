@@ -1,0 +1,66 @@
+.container {
+    max-width: 600px;
+    margin: 80px auto;
+    padding: 20px;
+}
+
+.container mat-card {
+    background: rgba(255,255,255,0.97);
+    border-radius: 10px;
+    box-shadow: 0px 0px 100px 1px rgba(255, 255, 255, 0.5);
+}
+
+.container mat-card h2 {
+    text-align: center;
+    margin: 30px auto 10px;
+    color: rgb(10,45,75);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.container mat-card form {
+    margin: 15px 30px 30px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container mat-card form mat-form-field {
+    margin-bottom: 20px;
+}
+
+.container mat-card form mat-form-field .mat-form-field-wrapper {
+    border-radius: 4px;
+    border: 1px solid white;
+}
+
+.container mat-card form mat-form-field .mat-form-field-outline {
+    border-width: 1px;
+}
+
+.container mat-card form mat-form-field .mat-input-element {
+    color: rgb(10,45,75);
+}
+
+.container mat-card form button {
+    align-self: center;
+    margin-bottom: 10px;
+}
+
+.container mat-card-content {
+    border-radius: 10px;
+    box-shadow: 0px 0px 100px 1px rgba(255, 255, 255, 0.5);
+}
+
+/* Button */
+.contact-button {
+    width: 150px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 15px;
+    color: white !important;
+    background-color: rgb(30,75,150) !important;
+}
+
+.contact-button:hover {
+    background-color: rgb(15,45,90) !important;
+}

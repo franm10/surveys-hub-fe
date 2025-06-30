@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "esModuleInterop": true,
+    "moduleResolution": "nodenext",
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "outDir": "lib",
+    "sourceMap": true,
+    "strict": true,
+    "skipLibCheck": true,      // ← evita controlli nei d.ts di terze parti
+    "target": "es2022",
+    "lib": ["ES2022"]
+  },
+  "compileOnSave": true,
+  "include": [
+    "src"
+  ]
+}

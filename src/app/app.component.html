@@ -1,0 +1,16 @@
+<app-header></app-header>
+
+<div [ngStyle]="{ 'background-image':'url('+image+')',
+                  'background-size': 'cover',
+                  'background-position': 'center',
+                  'background-repeat': 'repeat-y',
+                  'position': 'relative',
+                  'width': '100%',
+                  'overflow': 'hidden',
+                  'min-height': '100vh'
+                  }">
+    <router-outlet></router-outlet>
+</div>
+
+<app-footer></app-footer>
+

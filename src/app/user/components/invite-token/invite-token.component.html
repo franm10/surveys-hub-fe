@@ -1,0 +1,31 @@
+<div class="container">
+    <mat-card>
+        <h2>Vuoi partecipare ad un Questionario?</h2>
+        <h3>Inserisci il codice di invito.</h3>
+
+        <mat-card-content>
+            <form [formGroup]="inputForm">
+                <mat-form-field appearance="outline">
+                    <mat-label>Codice di invito</mat-label>
+                    <input matInput formControlName="token" placeholder="Codice di invito" required>
+                    <mat-error *ngIf="inputForm.get('token')?.invalid && inputForm.get('token')?.touched">Questo campo è obbligatorio!</mat-error>
+                </mat-form-field>
+
+                <mat-dialog-actions>
+                    <button mat-raised-button class="confirm-button" type="submit" (click)="submitInviteToken()" [disabled]="inputForm.invalid" [ngClass]="{'disabled-button': inputForm.invalid, 'enabled-button': !inputForm.invalid}">
+                        Conferma
+                    </button>
+                    <button mat-raised-button class="cancel-button" type="button" (click)="closeDialog()">
+                        Annulla
+                    </button>
+                </mat-dialog-actions>
+            </form>
+        </mat-card-content>
+
+        <h5>
+            <strong>NOTA:</strong>
+            <br>
+            La partecipazione potrebbe richiedere conferma da parte del proprietario del questionario.
+        </h5>
+    </mat-card>
+</div>

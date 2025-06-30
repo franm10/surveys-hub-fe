@@ -1,0 +1,105 @@
+.page-margin {
+    margin: 100px auto;
+}
+
+.dialog-margin {
+    margin: 13px 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-card {
+    background: rgba(255,255,255,0.97);
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 100px 1px rgba(255, 255, 255, 0.5);
+}
+
+mat-card-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: rgb(10, 45, 75);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.login-button {
+    height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    color: white !important;
+    background-color: rgb(30, 75, 150) !important;
+
+    &:hover {
+        background-color: rgb(15, 45, 90) !important;
+    }
+}
+
+.divider {
+    @apply flex items-center my-4 text-gray-500 text-xs uppercase;
+    span {
+        font-style: italic;
+        font-size: 13px;
+        padding: 1px;
+    }
+
+    &:before, &:after {
+        content: '';
+        flex: 1;
+        border-bottom: 1px solid #dadce0;
+    }
+}
+
+.google-button {
+    height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    color: rgb(30, 75, 150) !important;
+    background-color: white !important;
+
+    &:hover {
+        background-color: #f5f5f5 !important;
+    }
+
+    .google-logo {
+        height: 20px;
+        width: 20px;
+    }
+}
+
+.signup-button {
+    margin-top: 15px;
+    height: 40px;
+    font-size: 15px;
+    font-style: italic;
+    width: 100%;
+    color: red !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+
+    &:hover {
+        font-weight: bold;
+        color: rgb(30, 75, 150) !important;
+        background-color: white !important;
+        box-shadow: 3px 2px 5px 1px lightgrey !important;
+    }
+}

@@ -1,0 +1,25 @@
+<div class="dlg-box">
+    <div class="dlg-header">
+        <h2 class="dlg-title">Esempio&nbsp;JSON</h2>
+
+        <button mat-icon-button class="close-btn"
+                aria-label="Chiudi" (click)="close()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <div class="actions">
+        <a href="assets/example-survey.json" download>
+            <button mat-stroked-button color="primary">
+                <mat-icon>download</mat-icon>&nbsp;Scarica&nbsp;JSON
+            </button>
+        </a>
+    </div>
+
+    <pre class="json-code" *ngIf="jsonText; else loading">{{ jsonText }}</pre>
+
+    <ng-template #loading>
+        <p class="loading">Caricamento…</p>
+    </ng-template>
+</div>
+

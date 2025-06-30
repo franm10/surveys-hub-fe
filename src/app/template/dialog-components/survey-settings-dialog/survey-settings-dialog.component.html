@@ -1,0 +1,47 @@
+<div class="header">
+    <p class="header-title"><strong>Dettagli Questionario:</strong></p>
+    <button mat-icon-button class="close-button" aria-label="Chiudi" (click)="close()">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+
+<mat-dialog-content [formGroup]="form">
+    <p><strong>Titolo:</strong> {{ survey.title }}</p>
+    <p><strong>Descrizione:</strong> {{ survey.description }}</p>
+    <p><strong>Domande:</strong> {{ survey.numberOfQuestions }}</p>
+
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Stato</mat-label>
+        <mat-select formControlName="status">
+            <mat-option value="open">Aperto</mat-option>
+            <mat-option value="closed">Chiuso</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Visibilità</mat-label>
+        <mat-select formControlName="visibility">
+            <mat-option value="public">Publico</mat-option>
+            <mat-option value="private">Privato</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="date-row">
+        <mat-form-field appearance="fill">
+            <mat-label>Data Scadenza</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="expirationDate" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Ora</mat-label>
+            <input matInput type="time" formControlName="expirationTime" />
+        </mat-form-field>
+    </div>
+</mat-dialog-content>
+
+<div class="actions">
+    <button mat-raised-button class="save-button" [disabled]="form.invalid" (click)="save()">Salva</button>
+    <button mat-raised-button class="cancel-button" (click)="close()">Annulla</button>
+</div>

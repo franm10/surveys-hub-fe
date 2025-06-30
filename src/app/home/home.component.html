@@ -1,0 +1,27 @@
+<section class="hero">
+    <header class="hero-header">
+        <h1 class="hero-title">Benvenuto su&nbsp;Survey’s Hub</h1>
+        <p class="hero-sub">
+            Crea, condividi e rispondi ai questionari.<br>
+            Analizza i risultati in tempo reale.<br>
+            Semplice, veloce, gratuito. Iscriviti ora!
+        </p>
+    </header>
+
+    <div class="video-box">
+        <video class="hero-video"
+               src="/assets/hero-promo.mp4"
+               autoplay muted playsinline controls
+               preload="auto" [muted]="true"
+               poster="/assets/hero-poster.png">
+        </video>
+    </div>
+</section>
+
+<section class="features">
+    <mat-card class="feat-card" *ngFor="let f of featureList">
+        <mat-icon class="feat-icon">{{ f.icon }}</mat-icon>
+        <h3>{{ f.title }}</h3>
+        <p>{{ f.text }}</p>
+    </mat-card>
+</section>

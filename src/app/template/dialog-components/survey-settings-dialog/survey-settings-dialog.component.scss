@@ -1,0 +1,94 @@
+/* Header Page */
+.header {
+    background-color: rgb(15,45,90);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 4px 0px;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+}
+
+.header .header-title {
+    color: white;
+    font-size: 20px;
+}
+
+.header .close-button {
+    color: white;
+    position: absolute;
+    right: 10px;
+    top: 8px;
+
+    &:hover {
+        color: red;
+    }
+}
+
+p {
+    font-size: 15px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.date-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.date-row mat-form-field {
+    width: calc(50% - 10px) !important;
+    flex: 1 1 calc(50% - 10px);
+    min-width: 240px;
+}
+
+.mat-form-field {
+    margin-top: 1rem;
+}
+
+.dialog-content {
+    padding-bottom: 0;
+    height: auto;
+    overflow: visible;
+}
+
+/* -------------------------------------------------------------
+ *                      BUTTON
+ * ----------------------------------------------------------- */
+.actions {
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.save-button, .cancel-button {
+    min-width: 200px;
+    display: block;
+    margin: 10px auto 20px;
+    padding-inline: 26px;
+    font-weight: bold;
+}
+
+.cancel-button {
+    color: white !important;
+    background: rgb(230,0,0) !important;
+
+    &:hover {
+        color: white !important;
+        background: rgb(190,0,0) !important;
+    }
+}
+
+.save-button {
+    color: white !important;
+    background: rgb(15, 45, 90) !important;
+
+    &:hover {
+        background: whitesmoke !important;
+        color: rgb(30, 75, 150) !important;
+    }
+}

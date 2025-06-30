@@ -1,0 +1,118 @@
+<footer class="footer_section">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="full">
+                <div class="footer_contact">
+                    <div class="footer_logo">
+                        <a routerLink="/" routerLinkActive="active">
+                            <img src="/assets/logo_white.png" alt="#" width="210" height="78"/>
+                        </a>
+                    </div>
+                    <div class="contact_link_box">
+                        <a href="https://maps.app.goo.gl/xXieVSwGpZ1nk57L6">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>Via Pietro Bucci 44/Z, Rende (CS)</span>
+                        </a>
+                        <a href="https://wa.me/393421234567">
+                            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                            <span>+39 342 1234567</span>
+                        </a>
+                        <a href="mailto:info@pcworld.it">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <span>info&#64;surveyshub.it</span>
+                        </a>
+                    </div>
+                    <div class="footer_social">
+                        <a href="https://www.facebook.com/it">
+                            <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.twitter.com/it">
+                            <i class="fa-brands fa-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/">
+                            <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.instagram.com/">
+                            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <br><br><br>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="widget_menu">
+                                <h3>Menu</h3>
+                                <ul>
+                                    <li><a routerLink="/" routerLinkActive="active">Homepage</a></li>
+                                    <li><a routerLink="/about" routerLinkActive="active">Chi Siamo</a></li>
+                                    <li><a routerLink="/contacts" routerLinkActive="active">Contatti</a></li>
+                                    <li><a routerLink="/surveys" routerLinkActive="active">Questionari</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="widget_menu">
+                                <div *ngIf="(userRole$ | async) === null">
+                                    <h3>Nuovo Utente</h3>
+                                    <ul>
+                                        <li><a routerLink="/login" routerLinkActive="active">Accedi</a></li>
+                                        <li><a routerLink="/signup" routerLinkActive="active">Registrati</a></li>
+                                    </ul>
+                                </div>
+                                <div *ngIf="(userRole$ | async) === 'admin'">
+                                    <h3>Pannello Admin</h3>
+                                    <ul>
+                                        <li><a routerLink="/admin/home" routerLinkActive="active">Pannello Gestione</a></li>
+                                        <li><a routerLink="/admin/all-surveys" routerLinkActive="active">Tutti i Questionari</a></li>
+                                        <li><a routerLink="/logout" routerLinkActive="active">Disconnettiti</a></li>
+                                    </ul>
+                                </div>
+                                <div *ngIf="(userRole$ | async) === 'user'">
+                                    <h3>Account Utente</h3>
+                                    <ul>
+                                        <li><a routerLink="/user/home" routerLinkActive="active">Profilo Personale</a></li>
+                                        <li><a routerLink="/user/my-surveys" routerLinkActive="active">I miei Questionari</a></li>
+                                        <li><a routerLink="/user/surveys" routerLinkActive="active">Questionari Attivi</a></li>
+                                        <li><a routerLink="/user/submitted-surveys" routerLinkActive="active">Questionari Completati</a></li>
+                                        <li><a routerLink="/logout" routerLinkActive="active">Disconnettiti</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="widget_menu">
+                        <h3>Newsletter</h3>
+                        <div class="info_newsletter">
+                            <p>Iscriviti alla nostra newsletter per non perderti nessuna novità.</p>
+                        </div>
+                        <div class="form_sub">
+                            <form [formGroup]="newsletterForm" (ngSubmit)="newsletterSubscribe()">
+                                <div class="field">
+                                    <input matInput formControlName="email" type="email" id="newsletter"
+                                           style="text-transform: lowercase" placeholder="Inserisci la Tua Email" required/>
+                                    <input type="submit" value="Iscriviti" class="newsletter-button"
+                                           [disabled]="newsletterForm.invalid" (click)="newsletterSubscribe()"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Credits Section: start -->
+<div class="credits">
+    <p>
+        <b>Francesco Mannarino - ©2025</b>
+    </p>
+</div>
+<!-- Credits Section: end -->

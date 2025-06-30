@@ -1,0 +1,122 @@
+<div class="wrapper" *ngIf="!loading; else loadingTpl">
+    <h2 class="header-title">Gestione Partecipazione Utenti</h2>
+    <p><strong>Questionario:</strong> {{ survey.title }}</p>
+    <p><strong>Descrizione:</strong> {{ survey.description }}</p>
+    <p><strong>Stato: </strong><span class="status" [ngClass]="statusClass()">{{ translateStatus() }}</span></p>
+    <p><strong>Scade il:</strong> {{ survey.expirationDate | date:'dd/MM/yyyy HH:mm' }}</p>
+
+    <hr/>
+
+    <!-- TOKEN SECTION -->
+    <section class="flex-section">
+        <section class="left token-section">
+            <p><strong>Token di invito:</strong> {{ invitedToken || '— Nessuno —' }}</p>
+
+            <div class="token-buttons">
+                <button mat-raised-button class="invalidate-token-button" (click)="invalidateToken()" [disabled]="!invitedToken">
+                    Invalida token
+                </button>
+                <mat-checkbox [checked]="approvalRequired" (change)="toggleApprovalRequired($event)">
+                    Richiedi approvazione proprietario
+                </mat-checkbox>
+            </div>
+
+            <div class="token-buttons">
+                <button mat-raised-button class="generate-token-button" (click)="generateToken(true)">
+                    Nuovo token con approvazione
+                </button>
+                <button mat-raised-button class="generate-token-button" (click)="generateToken(false)">
+                    Nuovo token senza approvazione
+                </button>
+            </div>
+        </section>
+
+        <aside class="right info-note">
+            <h6><strong>Nota:</strong></h6>
+            <p>Il <em><strong>token</strong></em> consente all'utilizzatore di rispondere al questionario.<br>
+                Se <em><strong>richiedi approvazione</strong></em> è attiva,
+                    dopo aver utilizzato il token, un utente dovrà comunque attendere
+                    la tua approvazione per poter partecipare al questionario.</p>
+        </aside>
+    </section>
+
+    <hr/>
+
+    <!-- PENDING EMAILS -->
+    <section class="section">
+        <h3>Richieste di partecipazione in sospeso</h3>
+        <div *ngIf="pendingApprovalEmails.length; else noPendings">
+            <div class="email-grid">
+                <ng-container *ngFor="let row of rowsOf3(pendingApprovalEmails)">
+                    <div class="email-cell" *ngFor="let e of row">
+                        <span *ngIf="e">{{ e }}</span>
+                    </div>
+                </ng-container>
+            </div>
+            <button mat-raised-button class="approval-button" (click)="acceptAllPending()" [disabled]="!pendingApprovalEmails.length">
+                Approva tutte le richieste
+            </button>
+        </div>
+        <ng-template #noPendings>
+            <p><em>Nessuna richiesta da approvare.</em></p>
+        </ng-template>
+
+    </section>
+
+    <hr/>
+
+    <!-- PARTICIPATED USERS -->
+    <section class="section">
+        <h3>Utenti che hanno risposto</h3>
+        <div class="email-grid">
+            <ng-container *ngFor="let row of rowsOf3(participants)">
+                <div class="email-cell" *ngFor="let e of row">
+                    <span *ngIf="e">{{ e }}</span>
+                </div>
+            </ng-container>
+        </div>
+    </section>
+
+    <hr/>
+
+    <!-- INVITED EMAILS -->
+    <section class="section">
+        <h3>Email invitate</h3>
+        <div class="email-grid">
+            <ng-container *ngFor="let row of rowsOf3(invitedEmails)">
+                <div class="email-cell" *ngFor="let e of row">
+                    <ng-container *ngIf="e">
+                        <button mat-icon-button class="delete-button" (click)="removeEmail(e)"
+                                [disabled]="participants.includes(e)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                        <span>{{ e }}</span>
+                    </ng-container>
+                </div>
+            </ng-container>
+        </div>
+
+        <div class="add-email">
+            <mat-form-field appearance="fill">
+                <mat-label>Inserisci email</mat-label>
+                <input matInput [formControl]="newEmailControl" />
+                <mat-error *ngIf="newEmailControl.hasError('email') && !newEmailControl.hasError('required')">
+                    Formato email non valido
+                </mat-error>
+            </mat-form-field>
+            <button mat-raised-button class="add-email-button" (click)="addEmail()" [disabled]="newEmailControl.invalid"
+                        [ngClass]="{'disabled-button': newEmailControl.invalid, 'enabled-button': !newEmailControl.invalid}">
+                Invita utente
+            </button>
+        </div>
+
+        <button mat-raised-button color="primary" class="save-emails-button" (click)="saveEmails()">
+            Salva emails
+        </button>
+    </section>
+
+</div>
+
+<ng-template #loadingTpl>
+    <p>Caricamento in corso…</p>
+</ng-template>

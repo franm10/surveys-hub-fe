@@ -1,0 +1,71 @@
+<div class="container">
+    <mat-card>
+        <mat-card-title>Registrati</mat-card-title>
+
+        <mat-card-content>
+            <form [formGroup]="signupForm">
+                <mat-form-field appearance="outline">
+                    <mat-label>Nome</mat-label>
+                    <input matInput formControlName="name" placeholder="Nome" required>
+                    <mat-error *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched">
+                        Inserisci il tuo nome.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Cognome</mat-label>
+                    <input matInput formControlName="surname" placeholder="Cognome" required>
+                    <mat-error *ngIf="signupForm.get('surname')?.invalid && signupForm.get('surname')?.touched">
+                        Inserisci il tuo cognome.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>E-Mail</mat-label>
+                    <input matInput formControlName="email" placeholder="E-Mail" required>
+                    <mat-error *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+                        Inserisci una e-mail valida.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="{{ hidePassword ? 'password' : 'text' }}" formControlName="password" placeholder="Password" required (input)="0">
+                    <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+                        <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+                        Inserisci una password valida.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Conferma Password</mat-label>
+                    <input matInput type="{{ hidePassword ? 'password' : 'text' }}" formControlName="confirmPassword" placeholder="Conferma Password" required (input)="0">
+                    <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+                        <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="signupForm.get('confirmPassword')?.hasError('passwordsMismatch') && signupForm.get('confirmPassword')?.touched">
+                        Le password non corrispondono.
+                    </mat-error>
+                </mat-form-field>
+
+                <div *ngIf="!passwordMinLength() || !passwordContainsUppercase() ||
+                        !passwordContainsLowercase() || !passwordContainsNumberOrSpecial()" class="password-requirements-header">
+                    Requisiti Password:
+                </div>
+                <div class="password-rules">
+                    <p *ngIf="!passwordMinLength()" class="invalid">Almeno 8 caratteri</p>
+                    <p *ngIf="!passwordContainsUppercase()" class="invalid">Almeno 1 lettera maiuscola</p>
+                    <p *ngIf="!passwordContainsLowercase()" class="invalid">Almeno 1 lettera minuscola</p>
+                    <p *ngIf="!passwordContainsNumberOrSpecial()" class="invalid">Almeno 1 numero o carattere speciale</p>
+                </div>
+
+                <button mat-raised-button class="signup-button" type="submit" [disabled]="signupForm.invalid" (click)="onSubmit()" [ngClass]="{'disabled-button': signupForm.invalid, 'enabled-button': !signupForm.invalid}">
+                    Registrati
+                </button>
+            </form>
+        </mat-card-content>
+
+    </mat-card>
+</div>

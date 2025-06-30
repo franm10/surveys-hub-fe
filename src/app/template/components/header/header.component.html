@@ -1,0 +1,86 @@
+<header class="header_section">
+    <nav class="nav-container navbar navbar-expand-lg">
+        <a class="nav-logo" routerLink="/">
+            <img width="250" src="../../../../assets/logo.png" alt="#" height="92"/>
+        </a>
+
+        <div class="navbar-nav">
+            <div class="nav-item">
+                <a class="nav-link" routerLink="/">Homepage</a>
+            </div>
+
+            <div class="nav-item dropdown">
+                <button class="nav-link dropdown-toggle" [matMenuTriggerFor]="surveysHubMenu">
+                    Surveys Hub
+                </button>
+                <mat-menu #surveysHubMenu="matMenu">
+                    <button mat-menu-item routerLink="/about">Chi Siamo</button>
+                    <button mat-menu-item routerLink="/contacts">Contattaci</button>
+                </mat-menu>
+            </div>
+
+            <div class="nav-item">
+                <a class="nav-link" routerLink="/surveys">Questionari</a>
+            </div>
+
+            <div class="nav-item dropdown">
+                <div class="nav-item dropdown" *ngIf="(userRole$ | async) === null">
+                    <button class="nav-link dropdown-toggle" [matMenuTriggerFor]="authMenu">
+                        Account Utente
+                    </button>
+                    <mat-menu #authMenu="matMenu">
+                        <button mat-menu-item routerLink="/login">Accedi</button>
+                        <button mat-menu-item routerLink="/signup">Registrati</button>
+                    </mat-menu>
+                </div>
+                <div class="nav-item dropdown" *ngIf="(userRole$ | async) === 'user'">
+                    <button class="nav-link dropdown-toggle" [matMenuTriggerFor]="userMenu">
+                        Il Mio Account
+                    </button>
+                    <mat-menu #userMenu="matMenu">
+                        <button mat-menu-item routerLink="/user">Profilo</button>
+                        <button mat-menu-item routerLink="/user/my-surveys">I miei Questionari</button>
+                        <button mat-menu-item routerLink="/user/surveys">Questionari Attivi</button>
+                        <button mat-menu-item routerLink="/user/submitted-surveys">Questionari Completati</button>
+                        <button mat-menu-item routerLink="/logout">Disconnettiti</button>
+                    </mat-menu>
+                </div>
+                <div class="nav-item dropdown" *ngIf="(userRole$ | async) === 'admin'">
+                    <button class="nav-link dropdown-toggle" [matMenuTriggerFor]="adminMenu">
+                        Pannello Admin
+                    </button>
+                    <mat-menu #adminMenu="matMenu">
+                        <button mat-menu-item routerLink="/admin">Admin Home</button>
+                        <button mat-menu-item routerLink="/admin/surveys">Tutti i Questionari</button>
+                        <button mat-menu-item routerLink="/logout">Disconnettiti</button>
+                    </mat-menu>
+                </div>
+            </div>
+
+            <div *ngIf="(userRole$ | async) === 'user'">
+                <button class="btn nav-button" (click)="message()">
+                    <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                    <span class="badge" *ngIf="messageCounter > 0">{{ messageCounter }}</span>
+                </button>
+            </div>
+
+            <div *ngIf="(userRole$ | async) === 'user'">
+                <button class="btn nav-button" (click)="invite()">
+                    <i class="fa-solid fa-link"></i>
+                </button>
+            </div>
+
+            <div *ngIf="(userRole$ | async) === null">
+                <button class="btn nav-button" (click)="login()">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                </button>
+            </div>
+
+            <div *ngIf="(userRole$ | async) !== null">
+                <button class="btn nav-button" routerLink="/logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+</header>

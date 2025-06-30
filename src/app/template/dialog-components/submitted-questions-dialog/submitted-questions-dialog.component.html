@@ -1,0 +1,39 @@
+<div class="header">
+    <p class="survey-title"><strong>{{ survey.title }}</strong></p>
+    <button mat-icon-button class="close-button" aria-label="Chiudi" (click)="close()">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+
+<mat-dialog-content class="content" *ngIf="!loading; else loadingTpl">
+    <h3 class="list-title">Risposte inviate:</h3>
+
+    <div *ngFor="let q of questions" class="question-block">
+        <div class="q-text">{{ q.numSequence }}.&nbsp;{{ q.text }}</div>
+        <img *ngIf="q.imageUrl" class="q-img" [src]="q.imageUrl" alt="{{ q.imageUrl }}">
+
+        <p class="q-type">{{ q.allowMultipleAnswers ? 'Risposta multipla' : 'Risposta singola' }}</p>
+
+        <div [ngClass]="hasChoiceImage(q) ? 'choices-grid' : 'choices-list'">
+            <ng-container *ngIf="hasChoiceImage(q); else listTpl">
+                <div *ngFor="let c of q.questionChoices" class="choice-card">
+                    <span><span class="choice-label">{{ c.numSequence }}.&nbsp;</span>{{ c.text }}</span>
+                    <div class="choice-img-box">
+                        <img *ngIf="c.imageUrl" [src]="c.imageUrl" alt="{{ c.imageUrl }}">
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-template #listTpl>
+                <div *ngFor="let c of q.questionChoices">
+                    <strong>{{ c.numSequence }}.&nbsp;</strong>{{ c.text }}
+                </div>
+            </ng-template>
+        </div>
+
+    </div>
+</mat-dialog-content>
+
+<ng-template #loadingTpl>
+    <h3 class="list-title">Caricamento in corso...</h3>
+</ng-template>

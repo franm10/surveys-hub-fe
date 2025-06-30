@@ -1,0 +1,81 @@
+<div class="container">
+    <h2 class="header-title">Questionari Pubblici</h2>
+    <p class="header-description">
+        Questi questionari sono visualizzabili pubblicamente.
+        Alcuni accettano risposte anche senza invito da parte del proprietario.
+    </p>
+
+    <ng-container *ngIf="surveys!.length > 0">
+        <mat-card class="table-card">
+            <div class="survey-row header">
+                <div class="sector">
+                    <div class="title">Titolo</div>
+                    <div class="description">Descrizione</div>
+                </div>
+
+                <div class="num-questions">Numero domande</div>
+
+                <div class="sector">
+                    <div class="date">Data creazione</div>
+                    <div class="date">Data chiusura</div>
+                </div>
+
+                <div class="status">Stato</div>
+                <div class="actions">Azioni</div>
+            </div>
+
+            <div class="survey-row" *ngFor="let s of surveys; let i = index" [class.even]="i%2===1" [class.odd]="i%2===0">
+                <div class="sector">
+                    <div class="title">{{ s.title }}</div>
+                    <div class="description">{{ s.description }}</div>
+                </div>
+
+                <div class="num-questions">{{ s.numberOfQuestions }}</div>
+
+                <div class="sector">
+                    <div class="date">{{ s.createdAt | date:'HH:mm dd/MM/yyyy' }}</div>
+                    <div class="date">{{ s.expirationDate | date:'HH:mm dd/MM/yyyy' }}</div>
+                </div>
+
+                <div class="status" [ngClass]="statusClass(s.status)">{{ translateStatus(s.status) }}</div>
+
+                <div class="actions">
+                    <div class="stack">
+                        <button mat-raised-button class="questions-button"
+                                (click)="openQuestions(s)">
+                            Vedi&nbsp;Domande
+                        </button>
+
+                        <button mat-raised-button class="stats-button"
+                                (click)="statsSurvey(s)">
+                            Vedi&nbsp;Risultati
+                        </button>
+                    </div>
+
+                    <div *ngIf="isAlreadySubmitted(s.id); else canAnswer">
+                        <button mat-raised-button class="just-response-button" disabled>
+                            Risposto
+                        </button>
+                    </div>
+                    <ng-template #canAnswer>
+                        <button mat-raised-button class="response-button" [disabled]="isDisabledButton(s)" (click)="answerSurvey(s)"
+                                [ngClass]="{ 'disabled-button': isDisabledButton(s), 'enabled-button' : !isDisabledButton(s) }">
+                            Rispondi
+                        </button>
+                    </ng-template>
+                </div>
+            </div>
+
+        </mat-card>
+    </ng-container>
+
+    <ng-template [ngIf]="showNoData">
+        <div class="container">
+            <mat-card>
+                <p class="error-text">
+                    Non è stato possibile recuperare i questionari.
+                </p>
+            </mat-card>
+        </div>
+    </ng-template>
+</div>

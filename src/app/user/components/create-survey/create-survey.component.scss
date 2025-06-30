@@ -1,0 +1,200 @@
+/* -------------------------------------------------------------
+ *                   CONTENITORE GENERALE
+ * ----------------------------------------------------------- */
+.wrapper {
+    width: 90%;
+    margin: 50px auto;
+    padding: 28px;
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 20px;
+}
+
+.header-title {
+    color: rgb(10,45,90);
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* -------------------------------------------------------------
+ *                      JSON EDITOR
+ * ----------------------------------------------------------- */
+
+.json-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    margin: 12px 0 8px;
+}
+
+.json-toolbar .json-button {
+    color: rgb(10,45,90) !important;
+    padding-inline: 14px;
+    font-size: 13px;
+}
+
+.json-field,
+.json-field.mat-mdc-form-field {
+    width: 100%;
+}
+
+.json-field textarea.mat-input-element {
+    max-height: 60vh;
+    overflow: auto;
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+
+/* -------------------------------------------------------------
+ *                      FORM BUILDER
+ * ----------------------------------------------------------- */
+.full-width {
+    width: 100%;
+}
+
+.flex-grow {
+    flex: 1 1 auto;
+}
+
+.date-row,
+.settings-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.date-row mat-form-field {
+    width: calc(50% - 10px) !important;
+    flex: 1 1 calc(50% - 10px);
+    min-width: 240px;
+}
+
+.settings-left {
+    flex: 1 1 calc(50% - 10px);
+    min-width: 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.settings-left mat-form-field {
+    width: 100%;
+}
+
+.info-note {
+    flex: 1 1 calc(50% - 10px);
+    min-width: 240px;
+    background: #f4f7ff;
+    border-radius: 15px;
+    padding: 16px 18px;
+    font-size: 13px;
+    color: #333;
+}
+
+.invited-emails, .questions {
+    margin: 30px auto 20px 5px;
+}
+
+.invited-text, .questions-text {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.invited-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+}
+
+.invited-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex: 0 0 calc(33.333% - 10px);
+    min-width: 260px;
+    margin: 0;
+}
+
+.invited-row mat-form-field {
+    flex: 1 1 auto;
+    width: 100% !important;
+    max-height: 70px;
+}
+
+.questions-form {
+    margin: 15px auto 25px;
+}
+
+.question-row, .option-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.option-row mat-form-field:first-child {
+    flex: 0 0 40%;
+    min-width: 200px;
+}
+
+.option-row mat-form-field:nth-child(2) {
+    flex: 0 0 10%;
+    min-width: 140px;
+}
+
+.option-row mat-form-field:nth-child(3) {
+    flex: 1 1 40%;
+    min-width: 160px;
+}
+
+
+/* -------------------------------------------------------------
+ *                      BUTTON
+ * ----------------------------------------------------------- */
+.remove-email-button, .remove-option-button {
+    margin: auto 10px;
+    transform: translate(-10px, -10px);
+
+    &:hover {
+        color: white !important;
+        background: red !important;
+    }
+}
+
+.remove-question-button {
+    margin: auto 20px;
+
+    &:hover {
+        color: white !important;
+        background: red !important;
+    }
+}
+
+.add-email-button, .add-question-button, .add-option-button {
+    min-width: 180px;
+    margin: auto 10px;
+    background: whitesmoke !important;
+    color: rgb(30, 75, 150) !important;
+
+    &:hover {
+        color: white !important;
+        background: rgb(15, 45, 90) !important;
+    }
+}
+
+.submit-button {
+    min-width: 200px;
+    display: block;
+    margin: 10px auto 20px;
+    padding-inline: 26px;
+    font-weight: bold;
+    color: white !important;
+    background: rgb(15, 45, 90) !important;
+
+    &:hover {
+        background: whitesmoke !important;
+        color: rgb(30, 75, 150) !important;
+    }
+}

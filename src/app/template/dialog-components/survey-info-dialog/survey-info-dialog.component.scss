@@ -1,0 +1,41 @@
+.header {
+    margin: 20px auto 0;
+    align-content: center;
+    font-weight: bold;
+    color: rgb(15,45,90);
+}
+
+.wrapper p {
+    margin: 0;
+}
+
+.status {
+    font-weight: bold;
+}
+
+.status.open {
+    color: #0a8633;
+}
+
+.status.closed {
+    color: #c21010;
+}
+
+.status.archived {
+    color: #000;
+}
+
+.close-button {
+    display: block;
+    margin: 10px auto;
+    min-width: 200px;
+    align-items: center;
+
+    color: white !important;
+    background-color: rgb(15,45,90) !important;
+
+    &:hover {
+        color: rgb(15,45,90) !important;
+        background-color: whitesmoke !important;
+    }
+}

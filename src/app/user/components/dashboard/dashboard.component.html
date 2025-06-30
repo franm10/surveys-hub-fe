@@ -1,0 +1,12 @@
+<section class="container">
+    <mat-card>
+        <h2>Bentornato, {{ user?.name }}!</h2>
+
+        <div class="user-info">
+            <h3><b>Profilo Utente</b></h3>
+            <p><b>Nome:</b> {{ user?.name }}</p>
+            <p><b>Email:</b> {{ user?.email }}</p>
+            <p><b>Password:&nbsp;</b> <a class="change-password-link" (click)="changePassword()">clicca qui per cambiarla</a> </p>
+        </div>
+    </mat-card>
+</section>

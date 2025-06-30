@@ -1,0 +1,27 @@
+<div class="token-container">
+    <h2>Token Firebase</h2>
+
+    <div *ngIf="error" class="error-message">
+        {{ error }}
+    </div>
+
+    <div *ngIf="!error && token" class="token-content">
+        <div class="token-left">
+            <h3>🔐 Header</h3>
+            <pre class="token-pre">{{ tokenHeader | json }}</pre>
+
+            <h3>📦 Payload</h3>
+            <pre class="token-pre">{{ tokenPayload | json }}</pre>
+        </div>
+
+        <div class="token-right">
+            <h3>🧾 Anteprima Token Completo</h3>
+            <div class="token-preview" [title]="token">
+                {{ truncateToken(token) }}
+            </div>
+            <button mat-raised-button color="primary" (click)="copyToken()" class="copy-button">
+                <mat-icon>content_copy</mat-icon> Copia token
+            </button>
+        </div>
+    </div>
+</div>

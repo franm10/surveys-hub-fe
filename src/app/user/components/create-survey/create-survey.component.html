@@ -1,0 +1,182 @@
+<section class="wrapper">
+    <h2 class="header-title">Crea un nuovo questionario</h2>
+
+    <mat-tab-group [(selectedIndex)]="selectedTab" (selectedTabChange)="onTabChange($event)">
+
+        <!-- ==================== FORM BUILDER START ==================== -->
+        <mat-tab label="Builder Form">
+            <form class="tab-pane" [formGroup]="surveyForm">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Titolo</mat-label>
+                    <input matInput formControlName="title"/>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Descrizione</mat-label>
+                    <input matInput formControlName="description"/>
+                </mat-form-field>
+
+                <div class="date-row">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Data Scadenza</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="expirationDate" />
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Ora</mat-label>
+                        <input matInput type="time" formControlName="expirationTime" />
+                    </mat-form-field>
+                </div>
+
+
+                <div class="settings-row">
+                    <div class="settings-left">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Visibilità</mat-label>
+                            <mat-select formControlName="visibility">
+                                <mat-option value="public">Pubblico</mat-option>
+                                <mat-option value="private">Privato</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-checkbox formControlName="generateInvitedToken">Genera token invito</mat-checkbox>
+                        <mat-checkbox formControlName="approvalRequired">Richiedi approvazione proprietario</mat-checkbox>
+                    </div>
+
+                    <aside class="settings-right info-note">
+                        <strong>Nota:</strong>
+                        <ol>
+                            <li>Con <em><strong>visibilità pubblica</strong></em> chiunque può vedere il questionario.</li>
+                            <li>Se generi un <em><strong>token di invito</strong></em>, chi possiede il token potrà partecipare e rispondere al questionario.
+                                Selezionando <em><strong>richiedi approvazione</strong></em> sarai tu a dover accettare la richiesta;</li>
+                            <li>Se la visibilità è pubblica e non richiedi approvazione,
+                                tutti potranno compilare il questionario senza restrizioni.</li>
+                        </ol>
+                    </aside>
+                </div>
+
+                <div class="invited-emails">
+                    <h3 class="invited-text">E-mail invitate</h3>
+                    <div formArrayName="invitedEmails" class="invited-form">
+                        <div class="invited-row" *ngFor="let _ of invitedEmails.controls; let i = index">
+                            <mat-form-field appearance="fill">
+                                <input matInput type="email" [formControlName]="i" placeholder="email@example.com" />
+                            </mat-form-field>
+
+                            <button mat-icon-button class="remove-email-button" (click)="removeEmail(i)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <button mat-stroked-button class="add-email-button" (click)="addEmail()">
+                        + Aggiungi e-mail
+                    </button>
+                </div>
+
+                <div class="questions">
+                    <h3 class="questions-text">Domande</h3>
+                    <div class="questions-form">
+                        <mat-accordion formArrayName="questions">
+                            <mat-expansion-panel *ngFor="let q of questions.controls; let qi = index" [formGroupName]="qi">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        <span><strong>Domanda {{ qi + 1 }}</strong></span>
+                                        <button mat-icon-button class="remove-question-button" (click)="removeQuestion(qi)">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+
+                                <mat-form-field class="full-width">
+                                    <mat-label>Testo</mat-label>
+                                    <input matInput formControlName="text"/>
+                                </mat-form-field>
+
+                                <div class="question-row">
+                                    <mat-form-field>
+                                        <mat-label>Tipo Immagine</mat-label>
+                                        <mat-select formControlName="imageType">
+                                            <mat-option value="">——</mat-option>
+                                            <mat-option value="URL">URL</mat-option>
+                                            <mat-option value="BASE64">Base64-png</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <mat-form-field class="flex-grow">
+                                        <mat-label>Url / Base64</mat-label>
+                                        <input matInput formControlName="imageData"/>
+                                    </mat-form-field>
+                                </div>
+
+                                <div formArrayName="options">
+                                    <h5>Risposte</h5>
+                                    <mat-checkbox formControlName="allowMultipleAnswers">Risposta multipla</mat-checkbox>
+                                    <div class="option-row" *ngFor="let o of getOptions(qi).controls; let oi = index" [formGroupName]="oi">
+                                        <mat-form-field class="full-width">
+                                            <mat-label>Testo</mat-label>
+                                            <input matInput formControlName="text"/>
+                                        </mat-form-field>
+
+                                        <mat-form-field>
+                                            <mat-label>Tipo Immagine</mat-label>
+                                            <mat-select formControlName="imageType">
+                                                <mat-option value="">——</mat-option>
+                                                <mat-option value="URL">URL</mat-option>
+                                                <mat-option value="BASE64">Base64-png</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+
+                                        <mat-form-field class="flex-grow">
+                                            <mat-label>Url / Base64</mat-label>
+                                            <input matInput formControlName="imageData" placeholder="URL / Base64"/>
+                                        </mat-form-field>
+
+                                        <button mat-icon-button class="remove-option-button" (click)="removeOption(qi, oi)">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                    </div>
+
+                                    <button mat-stroked-button class="add-option-button" (click)="addOption(qi)">+ Aggiungi risposta</button>
+                                </div>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                    </div>
+
+                    <button mat-stroked-button class="add-question-button" (click)="addQuestion()">+ Aggiungi domanda</button>
+                </div>
+
+                <button mat-raised-button class="submit-button" (click)="submitForm()">
+                    <mat-icon>send</mat-icon>&nbsp;Crea questionario
+                </button>
+            </form>
+        </mat-tab>
+        <!-- ==================== FORM BUILDER END ==================== -->
+
+        <!-- ==================== JSON EDITOR START ==================== -->
+        <mat-tab label="JSON Editor">
+            <div class="json-toolbar">
+                <button mat-button class="json-button" (click)="openExample()">
+                    <mat-icon>code</mat-icon>&nbsp;Esempio JSON
+                </button>
+
+                <button mat-button class="json-button" (click)="fileInput.click()">
+                    <mat-icon>upload</mat-icon>&nbsp;Importa JSON
+                </button>
+
+                <input #fileInput type="file" hidden accept=".json" (change)="importJsonFile($event)">
+            </div>
+
+            <mat-form-field appearance="outline" class="json-field">
+                <textarea matInput rows="18" [(ngModel)]="jsonText"></textarea>
+            </mat-form-field>
+
+            <button mat-raised-button class="submit-button" (click)="submitJson()">
+                <mat-icon>send</mat-icon>&nbsp;Crea questionario
+            </button>
+        </mat-tab>
+        <!-- ==================== JSON EDITOR END ==================== -->
+
+    </mat-tab-group>
+</section>

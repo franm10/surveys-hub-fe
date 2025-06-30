@@ -1,0 +1,138 @@
+/* Header Page */
+.header {
+    background-color: rgb(10, 45, 90);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 4px 0px;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+}
+
+.header .survey-title {
+    font-size: 25px;
+    color: white;
+}
+
+.header .close-button {
+    color: white;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
+    &:hover {
+        color: red;
+    }
+}
+
+/* Scroll Area */
+.content {
+    max-height: 70vh;
+    overflow: auto;
+}
+
+.content .list-title {
+    margin: 0 0 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.content .question-block {
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+/* Single question-block */
+.q-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(10, 45, 90);
+}
+
+.q-img {
+    margin: 5px 22px 10px;
+    width: auto;
+    height: auto;
+    max-width: 350px;
+    max-height: 350px;
+    display: block;
+    object-fit: contain;
+}
+
+.q-type {
+    margin: 10px 22px 5px;
+    font-size: 13px;
+    font-style: italic;
+    color: #555;
+}
+
+/* Question Choices - Layout Verticale */
+.choices-list {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Question Choices - Layout Orizzontale */
+.choices-grid {
+    margin-left: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px;
+}
+
+.choice-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.choice-label {
+    font-weight: bold;
+}
+
+.choice-img-box {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.choice-img-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    overflow: hidden;
+}
+
+/* Button */
+.submit-button {
+    display: block;
+    margin: 15px auto;
+    min-width: 200px;
+    align-items: center;
+}
+
+.disabled-button {
+    background-color: lightgrey !important;
+}
+
+.enabled-button {
+    color: white !important;
+    background-color: rgb(15,45,90) !important;
+
+    &:hover {
+        color: rgb(15,45,90) !important;
+        background-color: whitesmoke !important;
+    }
+}

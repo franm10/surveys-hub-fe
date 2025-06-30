@@ -1,0 +1,151 @@
+.wrapper {
+    width: 90%;
+    margin: 50px auto;
+    padding: 28px;
+    background: rgba(255,255,255,0.97);
+    border-radius: 20px;
+}
+
+.header-title {
+    color: rgb(10,45,90);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.wrapper p {
+    margin: 2px auto;
+}
+
+.status {
+    font-weight: bold;
+}
+
+.status.open {
+    color: #0a8633;
+}
+
+.status.closed {
+    color: #c21010;
+}
+
+.status.archived {
+    color: #000;
+}
+
+/* TOKEN SECTION */
+.flex-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+.flex-section .left {
+    flex: 1;
+}
+.flex-section .right.info-note {
+    flex: 1;
+    background: #f4f7ff;
+    border-radius: 15px;
+    padding: 16px;
+    font-size: 13px;
+}
+
+.token-section {
+}
+
+.token-buttons {
+    margin: 15px auto;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.invalidate-token-button {
+    background-color: rgb(230,0,0) !important;
+    color: white !important;
+    margin-right: 20px;
+
+    &:hover {
+        background-color: rgb(190,0,0) !important;
+    }
+}
+
+.generate-token-button {
+    background-color: rgb(15,45,90) !important;
+    color: white !important;
+
+    &:hover {
+        background-color: whitesmoke !important;
+        color: rgb(15,45,90) !important;
+    }
+}
+
+/* Pending requests button */
+.approval-button {
+    margin: 10px auto;
+    background-color: rgb(15,45,90) !important;
+    color: white !important;
+
+    &:hover {
+        background-color: whitesmoke !important;
+        color: rgb(15,45,90) !important;
+    }
+}
+
+/* GRID for emails */
+.email-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+}
+
+.email-cell {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    min-height: 40px;
+}
+
+.email-cell .delete-button {
+    margin: 4px 0 0;
+    padding: 0;
+
+    &:hover {
+        color: red !important;
+    }
+}
+
+/* add-email & save */
+.add-email {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 12px 0;
+}
+
+.add-email-button {
+}
+
+.enabled-button {
+    background-color: rgb(15,45,90) !important;
+    color: white !important;
+
+    &:hover {
+        background-color: white !important;
+        color: rgb(15,45,90) !important;
+    }
+}
+
+.save-emails-button {
+    margin: 5px auto;
+    display: block;
+    background-color: rgb(15,45,90) !important;
+    color: white !important;
+
+    &:hover {
+        background-color: white !important;
+        color: rgb(15,45,90) !important;
+    }
+}
+

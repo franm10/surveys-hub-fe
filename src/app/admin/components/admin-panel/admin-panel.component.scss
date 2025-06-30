@@ -1,0 +1,55 @@
+/* Container principale */
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px 0;
+}
+
+/* Mat-Card */
+mat-card {
+    background: rgba(255,255,255,0.97);
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.container mat-card h2 {
+    font-size: 30px;
+    text-align: center;
+    margin: 40px auto;
+    color: rgb(15,45,90);
+}
+
+.container mat-card h4 {
+    font-size: 30px;
+    text-align: center;
+    margin: 40px auto;
+    color: rgb(15,45,90);
+}
+
+.user-info {
+    margin: 0 20px;
+}
+
+.user-info h3 {
+    font-size: 25px;
+    text-align: center;
+    color: rgb(10,45,75);
+}
+
+.user-info p {
+    font-size: 17px;
+}
+
+.change-password-link {
+    color: rgb(30,75,150);
+    text-decoration: none;
+    font-style: italic;
+    cursor: pointer;
+}
+
+.change-password-link:hover {
+    text-decoration: underline;
+    color: red;
+}

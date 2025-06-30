@@ -1,0 +1,32 @@
+.container {
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.container mat-card {
+    border-radius: 10px;
+    box-shadow: 0 0 100px 1px rgba(255, 255, 255, 0.5);
+    width: 90%;
+}
+
+.container mat-card h2 {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    color: red;
+}
+
+.container mat-card h3 {
+    text-align: center;
+    margin: 10px auto 20px;
+    font-size: 22px;
+    color: rgb(10,45,75);
+}
+
+.container mat-card h3 p {
+    font-style: italic;
+}

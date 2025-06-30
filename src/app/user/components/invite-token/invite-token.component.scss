@@ -1,0 +1,97 @@
+.container {
+    margin: 15px auto;
+    border-radius: 10px;
+    max-width: 600px;
+}
+
+.container mat-card {
+    background-color: transparent !important;
+    box-shadow: none;
+    padding: 0;
+    border-radius: 10px;
+}
+
+.container mat-card h2 {
+    margin: 10px auto;
+    text-align: center;
+    color: rgb(10, 45, 75);
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.container mat-card h3 {
+    margin: 10px auto 20px;
+    text-align: center;
+    color: rgb(10, 45, 75);
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.container mat-card h5 {
+    margin: 0 30px;
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 400;
+    color: rgb(10, 45, 75);
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+mat-form-field {
+    width: 75%;
+}
+
+mat-dialog-content {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    width: 50%;
+    margin: 0 50px 10px;
+    cursor: pointer;
+}
+
+.confirm-button {
+    flex: 0.6;
+    font-size: 18px;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 24px;
+    cursor: pointer;
+}
+
+.disabled-button {
+    background-color: lightgrey !important;
+}
+
+.enabled-button {
+    color: white !important;
+    background-color: rgb(230,0,0) !important;
+
+    &:hover {
+        background-color: rgb(190, 0, 0) !important;
+    }
+}
+
+.cancel-button {
+    flex: 0.6;
+    color: white !important;
+    background-color: rgb(30, 75, 150) !important;
+    font-size: 18px;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 24px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgb(15, 45, 90) !important;
+    }
+}

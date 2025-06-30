@@ -1,0 +1,75 @@
+<div class="header">
+    <p class="survey-title"><strong>{{ survey.title }}</strong></p>
+    <button mat-icon-button class="close-button" aria-label="Chiudi" (click)="close()">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+
+<mat-dialog-content class="content" *ngIf="!loading; else loadingTpl">
+    <h3 class="list-title">Rispondi&nbsp;alle&nbsp;Domande:</h3>
+
+    <form [formGroup]="answerForm">
+        <div *ngFor="let q of questions; let qi = index" class="question-block">
+            <div class="q-text">{{ q.numSequence }}.&nbsp;{{ q.text }}</div>
+            <img *ngIf="q.imageUrl" class="q-img" [src]="q.imageUrl" alt="not found">
+
+            <p class="q-type">{{ q.allowMultipleAnswers ? 'Risposta multipla' : 'Risposta singola' }}</p>
+
+            <ng-container *ngIf="hasChoiceImage(q); else noImgTpl">
+                <ng-container *ngIf="q.allowMultipleAnswers; else radioImgTpl">
+                    <div class="choices-grid">
+                        <div *ngFor="let c of q.questionChoices; let ci = index" class="choice-card" [formGroupName]="choiceKey(qi)">
+                            <mat-checkbox [formArrayName]="choiceKey(qi)" [formControlName]="ci" >
+                                <span>{{ c.text }}</span>
+                                <div class="choice-img-box">
+                                    <img *ngIf="c.imageUrl" [src]="c.imageUrl" alt="not found"/>
+                                </div>
+                            </mat-checkbox>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <ng-template #radioImgTpl>
+                    <mat-radio-group class="choices-grid" [formControlName]="choiceKey(qi)">
+                        <mat-radio-button *ngFor="let c of q.questionChoices; let ci = index" [value]="ci + 1" class="choice-card">
+                            <span>{{ c.text }}</span>
+                            <div class="choice-img-box">
+                                <img *ngIf="c.imageUrl" [src]="c.imageUrl" alt="not found"/>
+                            </div>
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </ng-template>
+            </ng-container>
+
+            <ng-template #noImgTpl>
+                <div class="choices-list">
+                    <ng-container *ngIf="q.allowMultipleAnswers; else radioNoImgTpl">
+                        <div *ngFor="let c of q.questionChoices; let ci = index" [formGroupName]="choiceKey(qi)">
+                            <mat-checkbox [formArrayName]="choiceKey(qi)" [formControlName]="ci">
+                                {{ c.text }}
+                            </mat-checkbox>
+                        </div>
+                    </ng-container>
+
+                    <ng-template #radioNoImgTpl>
+                        <mat-radio-group [formControlName]="choiceKey(qi)">
+                            <div *ngFor="let c of q.questionChoices; let ci = index">
+                                <mat-radio-button [value]="ci + 1">
+                                    {{ c.text }}
+                                </mat-radio-button>
+                            </div>
+                        </mat-radio-group>
+                    </ng-template>
+                </div>
+            </ng-template>
+        </div>
+        <button mat-raised-button class="submit-button" (click)="submit()"
+                [disabled]="answerForm.invalid" [ngClass]="answerForm.invalid ? 'disabled-button' : 'enabled-button'">
+            Invia risposte
+        </button>
+    </form>
+</mat-dialog-content>
+
+<ng-template #loadingTpl>
+    <h3 class="list-title">Caricamento in corso...</h3>
+</ng-template>
