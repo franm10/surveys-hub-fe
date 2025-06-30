@@ -44,8 +44,6 @@ import { AuthInterceptor }              from './auth/services/auth.interceptor';
 import { HeaderComponent }              from './template/components/header/header.component';
 import { FooterComponent }              from './template/components/footer/footer.component';
 import { TokenPageComponent }           from './test/token-page/token-page.component';
-import { ConfirmDialogComponent }       from './template/confirm-dialog/confirm-dialog.component';
-import { InputDialogComponent }         from './template/input-dialog/input-dialog.component';
 import { AboutComponent }               from './home/components/about/about.component';
 import { HomeComponent }                from './home/home.component';
 import { NotFoundRedirectComponent }    from './template/components/not-found-redirect/not-found-redirect.component';
@@ -83,8 +81,6 @@ export function initializeAppFactory(authService: AuthService): () => Promise<vo
         HeaderComponent,
         FooterComponent,
         TokenPageComponent,
-        ConfirmDialogComponent,
-        InputDialogComponent,
         AboutComponent,
         HomeComponent,
         NotFoundRedirectComponent,
