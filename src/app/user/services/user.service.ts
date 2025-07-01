@@ -117,6 +117,10 @@ export class UserService {
         return this.http.get<ApiResponse<SurveyResponse[]>>( `${this.base}/user/surveys/invite/get-all-open` );
     }
 
+    getAllSurveysSubmittedByUser(): Observable<ApiResponse<SurveyResponse[]>> {
+        return this.http.get<ApiResponse<SurveyResponse[]>>( `${this.base}/user/surveys/submitted/get-all` );
+    }
+
     submitSurvey(body: { surveyId: string; answers: Record<number, number[]>; }): Observable<ApiResponse<SubmissionSurveyResponse>> {
         return this.http.post<ApiResponse<SubmissionSurveyResponse>>(`${this.base}/user/surveys/submit`, body);
     }

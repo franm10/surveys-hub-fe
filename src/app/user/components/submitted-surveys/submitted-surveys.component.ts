@@ -32,7 +32,7 @@ export class SubmittedSurveysComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.userSvc.getAllOpenSurveysWhenUserInvited()
+        this.userSvc.getAllSurveysSubmittedByUser()
             .pipe(
                 takeUntil(this.destroy$),
                 finalize(() => this.handleNoData())
