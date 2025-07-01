@@ -86,3 +86,50 @@ export const onSubmissionCreate = functions
       tx.update(statsRef, updates);
     });
   });
+
+enum Status {
+  OPEN = "OPEN",
+  CLOSED = "CLOSED",
+  ARCHIVED = "ARCHIVED"
+}
+
+/**
+ * Trigger for close expired surveys
+ * */
+export const closeExpiredSurveys = functions.pubsub
+  .schedule("0 4 * * *")
+  .timeZone("Europe/Rome")
+  .onRun(async () => {
+    const now = admin.firestore.Timestamp.now();
+
+    const snapshot = await db.collection("surveys")
+      .where("status", "==", Status.OPEN)
+      .get();
+
+    if (snapshot.empty) {
+      return null;
+    }
+
+    const batch = db.batch();
+    let updated = 0;
+
+    snapshot.forEach((doc) => {
+      const data = doc.data();
+      const expirationDate = data.expirationDate as admin.firestore.Timestamp;
+
+      if (expirationDate && expirationDate.toMillis() < now.toMillis()) {
+        batch.update(doc.ref, {status: Status.CLOSED});
+        updated++;
+        console.log(`Survey ${doc.id} scaduta e chiusa`);
+      }
+    });
+
+    if (updated > 0) {
+      await batch.commit();
+      console.log("survey scadute chiuse.");
+    } else {
+      console.log("Nessuna survey scaduta da chiudere.");
+    }
+
+    return null;
+  });
