@@ -64,6 +64,7 @@ import { SurveyInfoDialogComponent }    from './template/dialog-components/surve
 import { SurveySettingsDialogComponent } from './template/dialog-components/survey-settings-dialog/survey-settings-dialog.component';
 import { DashboardComponent } from './user/components/dashboard/dashboard.component';
 import { AdminPanelComponent } from './admin/components/admin-panel/admin-panel.component';
+import { AllSurveysComponent } from './admin/components/all-surveys/all-surveys.component';
 
 export function initializeAppFactory(authService: AuthService): () => Promise<void> {
     return () => authService.initializeAuth();
@@ -100,7 +101,8 @@ export function initializeAppFactory(authService: AuthService): () => Promise<vo
         SurveyInfoDialogComponent,
         SurveySettingsDialogComponent,
         DashboardComponent,
-        AdminPanelComponent
+        AdminPanelComponent,
+        AllSurveysComponent
     ],
     imports: [
         BrowserModule,

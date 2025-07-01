@@ -1,17 +1,11 @@
 <div class="container">
-    <h2 class="header-title">Questionari Attivi</h2>
+    <h2 class="header-title">Gestione Questionari</h2>
     <div class="header-bar">
         <div class="header-text">
             <p class="header-description">
-                Qui sono riportati tutti i questionari "aperti" a cui sei stato invitato a rispondere.
-                <br>
-                <em>NOTA: i questionari "chiusi" a cui hai partecipato sono visibili nella sezione "Le mie Risposte".</em>
+                Qui sono riportati tutti i questionari pubblicati sul sito.
             </p>
         </div>
-
-        <button mat-raised-button class="invite-button" (click)="invite()">
-            Inserisci codice invito
-        </button>
     </div>
 
     <ng-container *ngIf="surveys!.length > 0">
@@ -50,28 +44,24 @@
 
                 <div class="actions">
                     <div class="stack">
-                        <button mat-raised-button class="questions-button"
-                                (click)="openQuestions(s)">
+                        <button mat-raised-button class="questions-button" (click)="openQuestions(s)">
                             Vedi&nbsp;Domande
                         </button>
 
-                        <button mat-raised-button class="stats-button"
-                                (click)="statsSurvey(s)">
+                        <button mat-raised-button class="stats-button" (click)="statsSurvey(s)">
                             Vedi&nbsp;Risultati
                         </button>
                     </div>
 
-                    <div *ngIf="isAlreadySubmitted(s.id); else canAnswer">
-                        <button mat-raised-button class="just-response-button" disabled>
-                            Risposto
+                    <div class="stack">
+                        <button mat-raised-button class="settings-button" (click)="manageSurvey(s)">
+                            Gestisci
+                        </button>
+
+                        <button mat-raised-button class="delete-button" (click)="deleteSurvey(s)">
+                            Elimina
                         </button>
                     </div>
-                    <ng-template #canAnswer>
-                        <button mat-raised-button class="response-button" [disabled]="isDisabledButton(s)" (click)="answerSurvey(s)"
-                                [ngClass]="{ 'disabled-button': isDisabledButton(s), 'enabled-button' : !isDisabledButton(s) }">
-                            Rispondi
-                        </button>
-                    </ng-template>
                 </div>
             </div>
 
@@ -82,7 +72,7 @@
         <div class="container">
             <mat-card>
                 <p class="error-text">
-                    Non è stato possibile recuperare i questionari.
+                    Nessun questionario disponibile e/o non è stato possibile recuperare i questionari.
                 </p>
             </mat-card>
         </div>
