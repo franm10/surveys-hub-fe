@@ -6,7 +6,7 @@ import { NotFoundRedirectComponent } from './template/components/not-found-redir
 
 /* Sub-Routes */
 import { homeRoutes } from './home/services/home.routes';
-import { authRoutes } from './auth/auth.routes';
+import { authRoutes } from './auth/services/auth.routes';
 import { adminRoutes} from './admin/services/admin.routes';
 import { userRoutes } from './user/services/user.routes';
 
