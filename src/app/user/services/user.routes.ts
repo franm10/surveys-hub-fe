@@ -6,12 +6,14 @@ import { InvitedSurveysComponent } from '../components/invited-surveys/invited-s
 import { SubmittedSurveysComponent } from '../components/submitted-surveys/submitted-surveys.component';
 import { DashboardComponent } from '../components/dashboard/dashboard.component';
 import {InviteSettingsComponent} from '../components/invite-settings/invite-settings.component';
+import {UserService} from './user.service';
+import {UserGuard} from './user.guard';
 
 export const userRoutes: Routes = [
-    { path: 'user', component: DashboardComponent },
-    { path: 'user/my-surveys', component: MySurveysComponent },
-    { path: 'user/my-surveys/create', component: CreateSurveyComponent },
-    { path: 'user/surveys', component: InvitedSurveysComponent },
-    { path: 'user/submitted-surveys', component: SubmittedSurveysComponent },
-    { path: 'user/survey-invite-settings', component: InviteSettingsComponent }
+    { path: 'user', component: DashboardComponent, canActivate: [UserGuard] },
+    { path: 'user/my-surveys', component: MySurveysComponent, canActivate: [UserGuard] },
+    { path: 'user/my-surveys/create', component: CreateSurveyComponent, canActivate: [UserGuard] },
+    { path: 'user/surveys', component: InvitedSurveysComponent, canActivate: [UserGuard] },
+    { path: 'user/submitted-surveys', component: SubmittedSurveysComponent, canActivate: [UserGuard] },
+    { path: 'user/survey-invite-settings', component: InviteSettingsComponent, canActivate: [UserGuard] }
 ];

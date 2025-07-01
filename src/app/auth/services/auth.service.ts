@@ -19,10 +19,6 @@ export class AuthService {
     private userSubject = new BehaviorSubject<UserInfo | null>(null);
     user$ = this.userSubject.asObservable();
 
-    //TODO: remove loadingSubject and check
-    private loadingSubject = new BehaviorSubject<boolean>(true);
-    loading$ = this.loadingSubject.asObservable();
-
     private readonly MAX_SESSION_SECONDS = 7 * 24 * 60 * 60;     // 7 days
 
     constructor(
@@ -35,11 +31,9 @@ export class AuthService {
             onAuthStateChanged(this.auth, async user => {
                 if( !user ) {
                     this.ngZone.run( () => this.userSubject.next(null) );
-                    this.loadingSubject.next(false);
                     resolve();
                     return;
                 }
-
                 const token = await user.getIdTokenResult();
                 const claims = token.claims as { [key: string]: any };
                 const authTime = Number(claims['auth_time']);
@@ -49,7 +43,6 @@ export class AuthService {
                 if( now - authTime > this.MAX_SESSION_SECONDS ) {
                     await this.auth.signOut();
                     this.ngZone.run( () => this.userSubject.next(null) );
-                    this.loadingSubject.next(false);
                     resolve();
                     return;
                 }
@@ -62,7 +55,6 @@ export class AuthService {
                     authTime: authTime
                 };
                 this.ngZone.run(() => this.userSubject.next(userInfo));
-                this.loadingSubject.next(false);
                 resolve();
             });
         });
